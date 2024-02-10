@@ -18,7 +18,7 @@
         "name": "next",
       },
     ],
-    "jsx": "preserve",
+    "jsx": "react",
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
