@@ -116,14 +116,16 @@ export default async function Home({
     
   
         {/* FrameButton for "49ers" */}
-        <FrameButton onClick={() => dispatch({ type: 'action', postBody: { untrustedData: { team: "49ers" } } })}>
-          49ers
-        </FrameButton>
+        <FrameButton onClick={(event) => dispatch({ type: 'action', postBody: { untrustedData: { team: "49ers" } } })}>
+  49ers
+</FrameButton>
+
   
         {/* FrameButton for "Chiefs" */}
-        <FrameButton onClick={() => dispatch({ type: 'action', postBody: { untrustedData: { team: "Chiefs" } } })}>
-          Chiefs
-        </FrameButton>
+        <FrameButton onClick={(event) => dispatch({ type: 'action', postBody: { untrustedData: { team: "49ers" } } })}>
+  Chiefs
+</FrameButton>
+
       </FrameContainer>
     </div>
   );
