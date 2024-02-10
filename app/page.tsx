@@ -62,7 +62,7 @@ export default function Home({ searchParams }: NextServerPageProps) {
     }
   });
 
-  const baseUrl = process.env.NEXT_PUBLIC_HOST || "http://localhost:3000";
+  const baseUrl = "http://framesjs-starter-lemon.vercel.app" || "http://localhost:3000";
 
   // Function to handle button click
   const handleButtonClick = (teamName: string) => {
