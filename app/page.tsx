@@ -113,6 +113,8 @@ export default async function Home({
           </div>
         </FrameImage>
   
+    
+  
         {/* FrameButton for "49ers" */}
         <FrameButton onClick={() => dispatch({ type: 'action', postBody: { untrustedData: { team: "49ers" } } })}>
           49ers
@@ -125,4 +127,5 @@ export default async function Home({
       </FrameContainer>
     </div>
   );
+  
 }
