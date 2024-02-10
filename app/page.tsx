@@ -8,6 +8,8 @@ import {
   getPreviousFrame,
   useFramesReducer,
   getFrameMessage,
+  FrameActionPayload,
+  ActionIndex,
 } from "frames.js/next/server";
 import Link from "next/link";
 import { DEBUG_HUB_OPTIONS } from "./debug/constants";
@@ -62,29 +64,35 @@ export default function Home({ searchParams }: NextServerPageProps) {
     }
   });
 
-  const baseUrl = "http://framesjs-starter-lemon.vercel.app" || "http://localhost:3000";
+  const baseUrl = "http://framesjs-starter-lemon.vercel.app";
 
   // Function to handle button click
-  const handleButtonClick = (teamName: string) => {
-    dispatch({ type: 'action', postBody: { untrustedData: { team: teamName } } });
+  const handleButtonClick = (teamName: string, actionIndex: ActionIndex) => {
+    const actionPayload: FrameActionPayload = {
+      trustedData: { messageBytes: '' }, // Needs to be populated based on your application logic
+      untrustedData: {
+        fid: 0, // Replace with actual fid
+        url: baseUrl,
+        messageHash: '', // Replace with actual message hash
+        timestamp: Date.now(), // Use the appropriate timestamp format
+        network: 1,
+        buttonIndex: actionIndex,
+        castId: { fid: 0, hash: '' }, // Replace with actual cast ID details
+        inputText: '', // Optional, based on user input
+      }
+    };
+    dispatch(actionPayload);
   };
 
   return (
     <div className="p-4">
-      frames.js starter kit. The Template Frame is on this page, it's in
-      the html meta tags (inspect source). <Link href={`/debug?url=${baseUrl}`} className="underline">
-        Debug
-      </Link>
-      <FrameContainer
-        postUrl="/frames"
-        state={state}
-        previousFrame={previousFrame}
-      >
+      <Link href={`/debug?url=${baseUrl}`} className="underline">Debug</Link>
+      <FrameContainer postUrl="/frames" state={state} previousFrame={previousFrame}>
         <FrameImage src="https://picsum.photos/seed/frames.js/1146/600" />
-        <FrameButton action="post" onClick={() => handleButtonClick("49ers")}>
+        <FrameButton action="post" onClick={() => handleButtonClick("49ers", 1)}>
           49ers
         </FrameButton>
-        <FrameButton action="post" onClick={() => handleButtonClick("Chiefs")}>
+        <FrameButton action="post" onClick={() => handleButtonClick("Chiefs", 2)}>
           Chiefs
         </FrameButton>
       </FrameContainer>
