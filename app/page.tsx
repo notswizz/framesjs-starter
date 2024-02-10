@@ -19,6 +19,12 @@ type State = {
   total_button_presses: number;
 };
 
+// Temporary local declaration if you can't import FrameActionPayload directly
+type FrameActionPayload = {
+  // structure based on your expectations or usage within frames.js/next/server
+};
+
+
 const initialState: State = { active: "1", total_button_presses: 0 };
 
 const reducer: FrameReducer<State> = (state, action) => {
