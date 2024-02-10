@@ -1,5 +1,4 @@
 import { logData } from '../utils/mongodb'; 
-import React from 'react';
 import {
   FrameButton,
   FrameContainer,
@@ -99,8 +98,7 @@ export default async function Home({
   return (
     <div className="p-4">
       frames.js starter kit. The Template Frame is on this page, it's in
-      the html meta tags (inspect source). 
-      <Link href={`/debug?url=${baseUrl}`}>
+      the html meta tags (inspect source). <Link href={`/debug?url=${baseUrl}`} className="underline">
         Debug
       </Link>
       <FrameContainer
@@ -118,16 +116,14 @@ export default async function Home({
     
   
         {/* FrameButton for "49ers" */}
-        <FrameButton onClick={ => dispatch({ type: 'action', postBody: { untrustedData: { team: "49ers" } } })}>
-  49ers
-</FrameButton>
-
+        <FrameButton onClick={() => dispatch({ type: 'action', postBody: { untrustedData: { team: "49ers" } } })}>
+          49ers
+        </FrameButton>
   
         {/* FrameButton for "Chiefs" */}
-        <FrameButton onClick={() => dispatch({ type: 'action', postBody: { untrustedData: { team: "49ers" } } })}>
+        <FrameButton onClick={() => dispatch({ type: 'action', postBody: { untrustedData: { team: "Chiefs" } } })}>
           Chiefs
         </FrameButton>
-
       </FrameContainer>
     </div>
   );

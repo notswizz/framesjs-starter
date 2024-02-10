@@ -7,6 +7,8 @@ export const metadata: Metadata = {
   description: "hi hi hi friends",
 };
 
+import React from "react";
+
 export default function RootLayout({
   children,
 }: {
