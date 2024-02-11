@@ -8,8 +8,8 @@ import {
   getPreviousFrame,
   useFramesReducer,
   getFrameMessage,
-  FrameActionPayload,
   ActionIndex,
+  FrameActionPayload, // Correctly imported, no local redeclaration needed.
 } from "frames.js/next/server";
 import Link from "next/link";
 import { DEBUG_HUB_OPTIONS } from "./debug/constants";
@@ -18,12 +18,6 @@ type State = {
   active: string;
   total_button_presses: number;
 };
-
-// Temporary local declaration if you can't import FrameActionPayload directly
-type FrameActionPayload = {
-  // structure based on your expectations or usage within frames.js/next/server
-};
-
 
 const initialState: State = { active: "1", total_button_presses: 0 };
 
@@ -65,8 +59,8 @@ export default function Home({ searchParams }: NextServerPageProps) {
       };
 
       logData("frameMessages", logObject)
-      .then(() => console.log("Data logged to MongoDB"))
-      .catch((err) => console.error("Failed to log data to MongoDB", err));
+        .then(() => console.log("Data logged to MongoDB"))
+        .catch((err) => console.error("Failed to log data to MongoDB", err));
     }
   });
 
@@ -75,16 +69,16 @@ export default function Home({ searchParams }: NextServerPageProps) {
   // Function to handle button click
   const handleButtonClick = (teamName: string, actionIndex: ActionIndex) => {
     const actionPayload: FrameActionPayload = {
-      trustedData: { messageBytes: '' }, // Needs to be populated based on your application logic
+      trustedData: { messageBytes: '' }, // This should be populated based on your application's logic.
       untrustedData: {
-        fid: 0, // Replace with actual fid
+        fid: 0, // Replace with actual fid.
         url: baseUrl,
-        messageHash: '', // Replace with actual message hash
-        timestamp: Date.now(), // Use the appropriate timestamp format
+        messageHash: '', // Replace with actual message hash.
+        timestamp: Date.now(), // Use the appropriate timestamp format.
         network: 1,
         buttonIndex: actionIndex,
-        castId: { fid: 0, hash: '' }, // Replace with actual cast ID details
-        inputText: '', // Optional, based on user input
+        castId: { fid: 0, hash: '' }, // Replace with actual cast ID details.
+        inputText: '', // Optional, based on user input.
       }
     };
     dispatch(actionPayload);
