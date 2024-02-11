@@ -69,7 +69,7 @@ export default function Home({ searchParams }: NextServerPageProps) {
     <div className="p-4">
       <Link href={`/debug?url=${baseUrl}`} className="underline">Debug</Link>
       <FrameContainer postUrl="/frames" state={state} pathname="/" previousFrame={previousFrame}>
-        <FrameImage src="https://picsum.photos/seed/frames.js/1146/600" />
+        <FrameImage src="sb.jpg" />
         <FrameButton action="post">
           49ers
         </FrameButton>
