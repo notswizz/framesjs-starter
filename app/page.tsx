@@ -57,28 +57,23 @@ export default function Home({ searchParams }: NextServerPageProps) {
       };
 
       logData("frameMessages", logObject)
-        .then(() => console.log("Data logged to MongoDB"))
-        .catch((err) => console.error("Failed to log data to MongoDB", err));
+      .then(() => console.log("Data logged to MongoDB"))
+      .catch((err) => console.error("Failed to log data to MongoDB", err));
     }
   });
 
   const baseUrl = "http://framesjs-starter-lemon.vercel.app";
 
-  // Function to handle button click has been simplified to avoid using ActionIndex
-  const handleButtonClick = (buttonLabel: string) => {
-    console.log(`${buttonLabel} button clicked.`);
-    // Dispatch logic or further handling based on button click can be added here.
-  };
-
+  // Simplified without onClick since it's not a valid prop for FrameButton
   return (
     <div className="p-4">
       <Link href={`/debug?url=${baseUrl}`} className="underline">Debug</Link>
       <FrameContainer postUrl="/frames" state={state} previousFrame={previousFrame}>
         <FrameImage src="https://picsum.photos/seed/frames.js/1146/600" />
-        <FrameButton action="post" onClick={() => handleButtonClick("49ers")}>
+        <FrameButton action="post">
           49ers
         </FrameButton>
-        <FrameButton action="post" onClick={() => handleButtonClick("Chiefs")}>
+        <FrameButton action="post">
           Chiefs
         </FrameButton>
       </FrameContainer>
