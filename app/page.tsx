@@ -8,8 +8,6 @@ import {
   getPreviousFrame,
   useFramesReducer,
   getFrameMessage,
-  ActionIndex,
-  FrameActionPayload, // Correctly imported, no local redeclaration needed.
 } from "frames.js/next/server";
 import Link from "next/link";
 import { DEBUG_HUB_OPTIONS } from "./debug/constants";
@@ -66,22 +64,10 @@ export default function Home({ searchParams }: NextServerPageProps) {
 
   const baseUrl = "http://framesjs-starter-lemon.vercel.app";
 
-  // Function to handle button click
-  const handleButtonClick = (teamName: string, actionIndex: ActionIndex) => {
-    const actionPayload: FrameActionPayload = {
-      trustedData: { messageBytes: '' }, // This should be populated based on your application's logic.
-      untrustedData: {
-        fid: 0, // Replace with actual fid.
-        url: baseUrl,
-        messageHash: '', // Replace with actual message hash.
-        timestamp: Date.now(), // Use the appropriate timestamp format.
-        network: 1,
-        buttonIndex: actionIndex,
-        castId: { fid: 0, hash: '' }, // Replace with actual cast ID details.
-        inputText: '', // Optional, based on user input.
-      }
-    };
-    dispatch(actionPayload);
+  // Function to handle button click has been simplified to avoid using ActionIndex
+  const handleButtonClick = (buttonLabel: string) => {
+    console.log(`${buttonLabel} button clicked.`);
+    // Dispatch logic or further handling based on button click can be added here.
   };
 
   return (
@@ -89,10 +75,10 @@ export default function Home({ searchParams }: NextServerPageProps) {
       <Link href={`/debug?url=${baseUrl}`} className="underline">Debug</Link>
       <FrameContainer postUrl="/frames" state={state} previousFrame={previousFrame}>
         <FrameImage src="https://picsum.photos/seed/frames.js/1146/600" />
-        <FrameButton action="post" onClick={() => handleButtonClick("49ers", 1)}>
+        <FrameButton action="post" onClick={() => handleButtonClick("49ers")}>
           49ers
         </FrameButton>
-        <FrameButton action="post" onClick={() => handleButtonClick("Chiefs", 2)}>
+        <FrameButton action="post" onClick={() => handleButtonClick("Chiefs")}>
           Chiefs
         </FrameButton>
       </FrameContainer>
