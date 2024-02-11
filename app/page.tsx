@@ -68,7 +68,7 @@ export default function Home({ searchParams }: NextServerPageProps) {
   return (
     <div className="p-4">
       <Link href={`/debug?url=${baseUrl}`} className="underline">Debug</Link>
-      <FrameContainer postUrl="/frames" state={state} previousFrame={previousFrame}>
+      <FrameContainer postUrl="/frames" state={state} pathname="http://framesjs-starter-lemon.vercel.app" previousFrame={previousFrame}>
         <FrameImage src="https://picsum.photos/seed/frames.js/1146/600" />
         <FrameButton action="post">
           49ers
