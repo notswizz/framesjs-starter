@@ -67,6 +67,7 @@ export default function Home({ searchParams }: NextServerPageProps) {
   // Simplified without onClick since it's not a valid prop for FrameButton
   return (
     <div className="p-4">
+      <h2>Follow notswizz</h2>
       <Link href={`/debug?url=${baseUrl}`} className="underline">Debug</Link>
       <FrameContainer postUrl="/frames" state={state} pathname="/" previousFrame={previousFrame}>
         <FrameImage src="https://a.espncdn.com/combiner/i?img=%2Fphoto%2F2024%2F0209%2Fr1288854_1296x729_16%2D9.jpg&w=920&h=518&scale=crop&cquality=80&location=origin&format=jpg" />
